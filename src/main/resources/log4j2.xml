@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Properties>
+    <!-- 定义日志格式 -->
+    <Property name="log.pattern">%d{MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}%n%msg%n%n</Property>
+  </Properties>
+  <!-- 定义Appender，即目的地 -->
+  <Appenders>
+    <!-- 定义输出到屏幕 -->
+    <Console name="console" target="SYSTEM_OUT">
+      <!-- 日志格式引用上面定义的log.pattern -->
+      <PatternLayout pattern="${log.pattern}" />
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <!-- 对info级别的日志，输出到console -->
+      <AppenderRef ref="console" level="info" />
+    </Root>
+  </Loggers>
+</Configuration>
