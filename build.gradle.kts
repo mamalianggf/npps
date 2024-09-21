@@ -11,33 +11,34 @@ plugins {
   id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
-repositories {
-  mavenCentral()
-}
-
 group = "com.mamaliang"
 version = "1.0.0-SNAPSHOT"
-
-java {
-}
-
 val mainVerticleName = "com.mamaliang.npps.MainVerticle"
 val launcherClassName = "io.vertx.core.Launcher"
 val watchForChange = "src/**/*"
 val doOnChange = "${projectDir}/gradlew classes"
+val vertxVersion = "4.5.9"
+val casVersion = "7.0.6"
+val junitJupiterVersion = "5.9.1"
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(8)
+  }
+}
+
+kotlin {
+  // 来源于插件rg.jetbrains.kotlin.jvm，使用jdk21作为Kotlin编译器的工具链
+  jvmToolchain(8)
+}
 
 application {
   mainClass.set(launcherClassName)
 }
 
-kotlin {
-  // 来源于插件rg.jetbrains.kotlin.jvm，使用jdk21作为Kotlin编译器的工具链
-  jvmToolchain(21)
+repositories {
+  mavenCentral()
 }
-
-val vertxVersion = "4.5.9"
-val casVersion = "7.0.6"
-val junitJupiterVersion = "5.9.1"
 
 dependencies {
   // Kotlin 标准库（Standard Library）的 JDK 8 版本
