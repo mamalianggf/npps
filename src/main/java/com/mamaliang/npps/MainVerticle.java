@@ -1,5 +1,6 @@
 package com.mamaliang.npps;
 
+import com.mamaliang.npps.objects.RedisClientSingleton;
 import io.vertx.core.AbstractVerticle;
 
 /**
@@ -10,6 +11,7 @@ public class MainVerticle extends AbstractVerticle {
 
   @Override
   public void start() {
+    RedisClientSingleton.initialize(vertx);
     vertx.deployVerticle("com.mamaliang.npps.cas.server.TgtCoroutineVerticle");
   }
 
