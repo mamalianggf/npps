@@ -28,7 +28,7 @@ java {
 }
 
 kotlin {
-  // 来源于插件rg.jetbrains.kotlin.jvm，使用jdk21作为Kotlin编译器的工具链
+  // 来源于插件rg.jetbrains.kotlin.jvm，使用jdk8作为Kotlin编译器的工具链
   jvmToolchain(8)
 }
 
