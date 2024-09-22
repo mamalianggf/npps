@@ -1,14 +1,14 @@
-package com.mamaliang.npps.common;
+package com.mamaliang.npps.common
 
-public interface Ordered {
+interface Ordered {
+    /**
+     * 值越小，优先级越高
+     */
+    val order: Int
 
-  int HIGHEST_PRECEDENCE = Integer.MIN_VALUE;
+    companion object {
+        val HIGHEST_PRECEDENCE: Int = Int.Companion.MIN_VALUE
 
-  int LOWEST_PRECEDENCE = Integer.MAX_VALUE;
-
-  /**
-   * 值越小，优先级越高
-   */
-  int getOrder();
-
+        val LOWEST_PRECEDENCE: Int = Int.Companion.MAX_VALUE
+    }
 }

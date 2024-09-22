@@ -1,42 +1,34 @@
-package com.mamaliang.npps.common;
+package com.mamaliang.npps.common
 
-import io.vertx.core.Vertx;
-import io.vertx.redis.client.Redis;
-import io.vertx.redis.client.RedisOptions;
+import io.vertx.core.Vertx
+import io.vertx.redis.client.Redis
+import io.vertx.redis.client.RedisOptions
 
-public class RedisClient {
+object RedisClient {
+    private var casServerRedisClient: Redis? = null
+    private var casClientRedisClient: Redis? = null
 
-  private static Redis casServerRedisClient;
-  private static Redis casClientRedisClient;
-
-  private RedisClient() {
-  }
-
-  public static void initialize(Vertx vertx) {
-    if (casClientRedisClient == null) {
-      RedisOptions options = new RedisOptions()
-        .setConnectionString("redis://10.0.209.174:6379/0");
-      casClientRedisClient = Redis.createClient(vertx, options);
+    fun initialize(vertx: Vertx) {
+        if (casClientRedisClient == null) {
+            val options = RedisOptions()
+                .setConnectionString("redis://10.0.209.174:6379/0")
+            casClientRedisClient = Redis.createClient(vertx, options)
+        }
+        if (casServerRedisClient == null) {
+            val options = RedisOptions()
+                .setConnectionString("redis://10.0.209.174:6379/1")
+            casServerRedisClient = Redis.createClient(vertx, options)
+        }
     }
-    if (casServerRedisClient == null) {
-      RedisOptions options = new RedisOptions()
-        .setConnectionString("redis://10.0.209.174:6379/1");
-      casServerRedisClient = Redis.createClient(vertx, options);
-    }
-  }
 
-  public static Redis getCasClientRedisClient() {
-    if (casClientRedisClient == null) {
-      throw new IllegalStateException("RedisClientSingleton is not initialized. Call initialize() first.");
+    fun getCasClientRedisClient(): Redis {
+        checkNotNull(casClientRedisClient) { "RedisClientSingleton is not initialized. Call initialize() first." }
+        return casClientRedisClient!!
     }
-    return casClientRedisClient;
-  }
 
-  public static Redis getCasServerRedisClient() {
-    if (casServerRedisClient == null) {
-      throw new IllegalStateException("RedisClientSingleton is not initialized. Call initialize() first.");
+    fun getCasServerRedisClient(): Redis {
+        checkNotNull(casServerRedisClient) { "RedisClientSingleton is not initialized. Call initialize() first." }
+        return casServerRedisClient!!
     }
-    return casServerRedisClient;
-  }
 }
 
