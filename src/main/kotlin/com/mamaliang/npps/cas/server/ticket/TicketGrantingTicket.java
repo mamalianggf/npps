@@ -2,7 +2,7 @@
 //
 //
 //import com.mamaliang.npps.cas.server.authentication.Authentication;
-//import com.mamaliang.npps.cas.server.authentication.principal.Service;
+//import com.mamaliang.npps.cas.server.authentication.Service;
 //
 //import java.util.Map;
 //

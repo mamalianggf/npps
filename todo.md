@@ -1,0 +1,1 @@
+1. AuthenticationHandler返回的是AuthenticationHandlerResult，什么时候将AuthenticationHandlerResult转换成Authentication，且是如何转换的？

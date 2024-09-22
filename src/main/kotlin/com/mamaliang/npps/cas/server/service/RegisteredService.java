@@ -1,6 +1,6 @@
 package com.mamaliang.npps.cas.server.service;
 
-import com.mamaliang.npps.cas.server.authentication.principal.Service;
+import com.mamaliang.npps.cas.server.authentication.Service;
 
 /**
  * registered service

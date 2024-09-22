@@ -1,15 +1,15 @@
-package com.mamaliang.npps.objects;
+package com.mamaliang.npps.common;
 
 import io.vertx.core.Vertx;
 import io.vertx.redis.client.Redis;
 import io.vertx.redis.client.RedisOptions;
 
-public class RedisClientSingleton {
+public class RedisClient {
 
   private static Redis casServerRedisClient;
   private static Redis casClientRedisClient;
 
-  private RedisClientSingleton() {
+  private RedisClient() {
   }
 
   public static void initialize(Vertx vertx) {

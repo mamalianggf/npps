@@ -1,7 +1,7 @@
 //package com.mamaliang.npps.cas.server.ticket;
 //
 //
-//import com.mamaliang.npps.cas.server.authentication.principal.Service;
+//import com.mamaliang.npps.cas.server.authentication.Service;
 //
 ///**
 // * ServiceTicket接口

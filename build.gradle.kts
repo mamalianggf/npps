@@ -2,10 +2,15 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.gradle.api.tasks.testing.logging.TestLogEvent.*
 
 plugins {
-  // Core plugins
+  /**
+   * Core plugins
+   */
   java
   application
-  // Community plugins
+  /**
+   * Community plugins
+   */
+  // kotlin version
   id("org.jetbrains.kotlin.jvm") version "2.0.20"
   // fat jar
   id("com.github.johnrengelman.shadow") version "7.1.2"
