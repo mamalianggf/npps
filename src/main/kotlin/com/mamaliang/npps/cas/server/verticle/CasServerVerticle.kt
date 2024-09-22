@@ -1,5 +1,6 @@
-package com.mamaliang.npps.cas.server
+package com.mamaliang.npps.cas.server.verticle
 
+import com.mamaliang.npps.coroutineHandler
 import io.vertx.ext.web.Router
 import io.vertx.kotlin.coroutines.CoroutineVerticle
 import io.vertx.kotlin.coroutines.coAwait
@@ -11,12 +12,19 @@ import io.vertx.kotlin.coroutines.coAwait
 class CasServerVerticle : CoroutineVerticle() {
 
     override suspend fun start() {
-        val router = Router.router(vertx)
-        router.get("/sso/login").handler { }
-
+        val router = createRouter()
         vertx.createHttpServer()
             .requestHandler(router)
             .listen(8080)
             .coAwait()
     }
+
+    private fun createRouter() = Router.router(vertx).apply {
+        get("/sso/login").coroutineHandler { ctx -> LoginHandler().handle(ctx) }
+    }
+
 }
+
+
+
+
