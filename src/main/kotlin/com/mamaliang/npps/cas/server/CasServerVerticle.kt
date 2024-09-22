@@ -10,13 +10,13 @@ import io.vertx.kotlin.coroutines.coAwait
  */
 class CasServerVerticle : CoroutineVerticle() {
 
-  override suspend fun start() {
-    val router = Router.router(vertx)
-    router.get("/sso/login").handler {  }
+    override suspend fun start() {
+        val router = Router.router(vertx)
+        router.get("/sso/login").handler { }
 
-    vertx.createHttpServer()
-      .requestHandler(router)
-      .listen(8080)
-      .coAwait()
-  }
+        vertx.createHttpServer()
+            .requestHandler(router)
+            .listen(8080)
+            .coAwait()
+    }
 }

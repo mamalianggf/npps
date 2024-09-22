@@ -1,44 +1,25 @@
-package com.mamaliang.npps.cas.server.service;
+package com.mamaliang.npps.cas.server.service
 
-import com.mamaliang.npps.cas.server.authentication.Service;
+import com.mamaliang.npps.cas.server.authentication.Service
 
 /**
  * registered service
  */
-public interface RegisteredService {
+interface RegisteredService {
+    /**
+     * service的唯一标识
+     */
+    val id: Long
 
-  /**
-   * service的唯一标识
-   *
-   * @return service的唯一标识
-   */
-  long getId();
+    /**
+     * service name
+     */
+    val name: String
 
-  /**
-   * service name
-   *
-   * @return service name
-   */
-  String getName();
+    /**
+     * service description
+     */
+    val description: String
 
-  /**
-   * service description
-   *
-   * @return service description
-   */
-  String getDescription();
-
-  /**
-   * {@link #getId()}
-   */
-  void setId(long id);
-
-  /**
-   * Returns whether the service matches the registered service.
-   * <p>Note, as of 3.1.2, matches are case insensitive.
-   *
-   * @param service the service to match.
-   * @return true if they match, false otherwise.
-   */
-  boolean matches(Service service);
+    fun matches(service: Service): Boolean
 }

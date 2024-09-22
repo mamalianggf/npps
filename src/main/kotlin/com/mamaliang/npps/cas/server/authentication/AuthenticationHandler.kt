@@ -11,11 +11,11 @@ import java.security.GeneralSecurityException
  */
 interface AuthenticationHandler : Ordered {
 
-  val name: String
+    val name: String
 
-  @Throws(GeneralSecurityException::class)
-  fun authenticate(credential: Credential): AuthenticationHandlerResult
+    @Throws(GeneralSecurityException::class)
+    fun authenticate(credential: Credential): AuthenticationHandlerResult
 
-  fun supports(credential: Credential): Boolean
+    fun supports(credential: Credential): Boolean
 
 }
