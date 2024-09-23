@@ -1,6 +1,6 @@
 package com.mamaliang.npps.cas.server.verticle
 
-import com.mamaliang.npps.coroutineHandler
+import com.mamaliang.npps.common.coroutineHandler
 import io.vertx.ext.web.Router
 import io.vertx.kotlin.coroutines.CoroutineVerticle
 import io.vertx.kotlin.coroutines.coAwait

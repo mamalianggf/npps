@@ -22,12 +22,12 @@ object RedisClient {
     }
 
     fun getCasClientRedisClient(): Redis {
-        checkNotNull(casClientRedisClient) { "RedisClientSingleton is not initialized. Call initialize() first." }
+        checkNotNull(casClientRedisClient) { "RedisClient is not initialized. Call initialize() first." }
         return casClientRedisClient!!
     }
 
     fun getCasServerRedisClient(): Redis {
-        checkNotNull(casServerRedisClient) { "RedisClientSingleton is not initialized. Call initialize() first." }
+        checkNotNull(casServerRedisClient) { "RedisClient is not initialized. Call initialize() first." }
         return casServerRedisClient!!
     }
 }
