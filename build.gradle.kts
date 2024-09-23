@@ -50,9 +50,10 @@ dependencies {
     // dependencyManagement
     implementation(platform("io.vertx:vertx-stack-depchain:$vertxVersion"))
     implementation("io.vertx:vertx-core")
-    implementation("io.vertx:vertx-web")
     implementation("io.vertx:vertx-lang-kotlin")
     implementation("io.vertx:vertx-lang-kotlin-coroutines")
+    implementation("io.vertx:vertx-web")
+    implementation("io.vertx:vertx-web-client")
     implementation("io.vertx:vertx-redis-client")
 
     // SLF4JLogDelegateFactory使用的spi的方式寻找实现类，所以log4j-slf4j-impl无法满足转而使用logback

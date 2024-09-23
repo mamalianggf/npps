@@ -1,4 +1,4 @@
-package com.mamaliang.npps.cas.server.authentication
+package com.mamaliang.npps.cas.server.authentication.principal
 
 /**
  * 各种实体的顶级接口

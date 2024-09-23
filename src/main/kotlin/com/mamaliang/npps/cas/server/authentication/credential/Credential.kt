@@ -1,4 +1,4 @@
-package com.mamaliang.npps.cas.server.authentication
+package com.mamaliang.npps.cas.server.authentication.credential
 
 /**
  * 认证凭据
