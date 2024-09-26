@@ -19,8 +19,8 @@ class RmsAuthenticationHandler(override val order: Int) : AuthenticationHandler 
     override suspend fun authenticate(credential: Credential): AuthenticationHandlerResult {
         var userPass = credential as UsernamePasswordCredential
         var body = JsonObject()
-        body.put("loginName", userPass.username);
-        body.put("password", userPass.password);
+        body.put("loginName", userPass.username)
+        body.put("password", userPass.password)
         var response = HttpClient.getRmsClient()
             .post("http://127.0.0.1:60700/users/login?withStatus=true")
             .sendJsonObject(body)
