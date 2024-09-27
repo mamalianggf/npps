@@ -5,6 +5,7 @@ import com.mamaliang.npps.cas.server.authentication.credential.impl.UsernamePass
 import com.mamaliang.npps.cas.server.authentication.handler.AuthenticationHandler
 import com.mamaliang.npps.cas.server.authentication.handler.AuthenticationHandlerResult
 import com.mamaliang.npps.cas.server.authentication.principal.SimplePrincipal
+import com.mamaliang.npps.common.RmsResponse
 import com.mamaliang.npps.common.HttpClient
 import io.vertx.core.json.JsonObject
 import io.vertx.kotlin.core.json.get
@@ -17,16 +18,24 @@ import io.vertx.kotlin.coroutines.coAwait
 class RmsAuthenticationHandler(override val order: Int) : AuthenticationHandler {
 
     override suspend fun authenticate(credential: Credential): AuthenticationHandlerResult {
-        var userPass = credential as UsernamePasswordCredential
-        var body = JsonObject()
-        body.put("loginName", userPass.username)
-        body.put("password", userPass.password)
-        var response = HttpClient.getRmsClient()
+        val userPass = credential as UsernamePasswordCredential
+        val requestBody = JsonObject()
+        requestBody.put("loginName", userPass.username)
+        requestBody.put("password", userPass.password)
+        val response = HttpClient.getRmsClient()
             .post("http://127.0.0.1:60700/users/login?withStatus=true")
-            .sendJsonObject(body)
+            .sendJsonObject(requestBody)
             .coAwait()
-        var attributes = response.bodyAsJsonObject().get<MutableMap<String, Any>>("data")
-        var principal = SimplePrincipal(credential.username, attributes)
+
+        val responseBody = response.bodyAsJson(RmsResponse::class.java)
+        when (responseBody) {
+            is com.mamaliang.npps.common.RmsErrorResponse -> TODO()
+            is com.mamaliang.npps.common.RmsSuccessResponse -> {
+                responseBody.data
+            }
+        }
+        val attributes = response.bodyAsJsonObject().get<MutableMap<String, Any>>("data")
+        val principal = SimplePrincipal(credential.username, attributes)
         return AuthenticationHandlerResult(credential, principal)
     }
 
