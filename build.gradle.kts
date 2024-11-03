@@ -8,14 +8,11 @@ plugins {
 }
 
 group = "com.mamaliang"
-version = "1.0.0-SNAPSHOT"
+version = property("version") as String
 
 repositories {
     mavenCentral()
 }
-
-val vertxVersion = "4.5.10"
-val junitJupiterVersion = "5.9.1"
 
 val mainVerticleName = "com.mamaliang.npps.manage.ManageVerticle"
 val launcherClassName = "com.mamaliang.npps.Launcher"
@@ -28,7 +25,7 @@ application {
 }
 
 dependencies {
-    implementation(platform("io.vertx:vertx-stack-depchain:$vertxVersion"))
+    implementation(platform("io.vertx:vertx-stack-depchain:${property("vertxVersion")}"))
     implementation("io.vertx:vertx-web")
     implementation("io.vertx:vertx-web-client")
     implementation("io.vertx:vertx-auth-common")
@@ -38,7 +35,7 @@ dependencies {
     compileOnly("io.vertx:vertx-codegen")
 //    compileOnly("org.projectlombok:lombok:1.18.34")
     testImplementation("io.vertx:vertx-junit5")
-    testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter:${property("junitJupiterVersion")}")
 }
 
 java {
