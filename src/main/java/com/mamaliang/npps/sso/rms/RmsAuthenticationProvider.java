@@ -1,6 +1,6 @@
-package com.mamaliang.npps.sso.server.provider.rms;
+package com.mamaliang.npps.sso.rms;
 
-import com.mamaliang.npps.sso.common.CustomAuthenticationProvider;
+import com.mamaliang.npps.common.CustomAuthenticationProvider;
 import com.mamaliang.npps.common.Tuple;
 import io.vertx.core.Future;
 import io.vertx.core.http.HttpServerRequest;

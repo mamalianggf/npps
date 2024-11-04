@@ -1,4 +1,4 @@
-package com.mamaliang.npps.sso.client.cas.ticketValidator;
+package com.mamaliang.npps.client.cas.ticketValidator;
 
 /**
  * cas provider 下在细分 多个TicketValidator

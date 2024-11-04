@@ -1,4 +1,4 @@
-package com.mamaliang.npps.sso.client.mTLS;
+package com.mamaliang.npps.client.mTLS;
 
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.auth.authentication.Credentials;

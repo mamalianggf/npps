@@ -1,6 +1,6 @@
-package com.mamaliang.npps.sso.server;
+package com.mamaliang.npps.sso;
 
-import com.mamaliang.npps.sso.server.handler.LoginHandler;
+import com.mamaliang.npps.sso.handler.LoginHandler;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.Vertx;

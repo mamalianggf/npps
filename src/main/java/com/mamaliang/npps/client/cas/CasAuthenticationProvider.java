@@ -1,4 +1,4 @@
-package com.mamaliang.npps.sso.client.cas;
+package com.mamaliang.npps.client.cas;
 
 /**
  * @author gaof

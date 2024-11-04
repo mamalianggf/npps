@@ -1,6 +1,6 @@
-package com.mamaliang.npps.sso.client;
+package com.mamaliang.npps.client;
 
-import com.mamaliang.npps.sso.client.handler.LoginHandler;
+import com.mamaliang.npps.client.handler.LoginHandler;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.ext.web.Router;
@@ -9,7 +9,7 @@ import io.vertx.ext.web.Router;
  * @author gaof
  * @date 2024/10/25
  */
-public class CasClientVerticle extends AbstractVerticle {
+public class ClientVerticle extends AbstractVerticle {
     @Override
     public void start(Promise<Void> startPromise) {
 

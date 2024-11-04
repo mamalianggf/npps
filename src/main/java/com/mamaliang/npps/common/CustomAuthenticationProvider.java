@@ -1,7 +1,5 @@
-package com.mamaliang.npps.sso.common;
+package com.mamaliang.npps.common;
 
-import com.mamaliang.npps.common.SupportType;
-import com.mamaliang.npps.common.Tuple;
 import io.vertx.core.Future;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.ext.auth.User;

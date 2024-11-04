@@ -1,4 +1,4 @@
-package com.mamaliang.npps.sso.client.oauth20;
+package com.mamaliang.npps.client.oauth20;
 
 /**
  * @author gaof

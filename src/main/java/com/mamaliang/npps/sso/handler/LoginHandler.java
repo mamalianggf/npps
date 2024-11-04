@@ -1,8 +1,8 @@
-package com.mamaliang.npps.sso.client.handler;
+package com.mamaliang.npps.sso.handler;
 
-import com.mamaliang.npps.sso.common.CustomAuthenticationProvider;
+import com.mamaliang.npps.common.CustomAuthenticationProvider;
+import com.mamaliang.npps.sso.rms.RmsAuthenticationProvider;
 import com.mamaliang.npps.common.Tuple;
-import com.mamaliang.npps.sso.server.provider.rms.RmsAuthenticationProvider;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;
 import io.vertx.core.http.HttpServerRequest;
@@ -15,14 +15,15 @@ import java.util.List;
 
 /**
  * @author gaof
- * @date 2024/10/30
+ * @date 2024/10/25
  */
 public class LoginHandler implements Handler<RoutingContext> {
 
+
     private final List<CustomAuthenticationProvider<? extends Credentials>> providers;
 
-    public LoginHandler() {
-        providers = List.of();
+    public LoginHandler(WebClient webClient) {
+        providers = List.of(new RmsAuthenticationProvider(webClient));
     }
 
     @Override
@@ -47,4 +48,5 @@ public class LoginHandler implements Handler<RoutingContext> {
         }
         return new Tuple<>(false, null);
     }
+
 }
