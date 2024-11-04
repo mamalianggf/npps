@@ -7,3 +7,4 @@
 
 ### 异常处理机制
 - Future.await 和 Future.failedFuture
+- 会话的timeout默认值是多少

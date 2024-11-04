@@ -17,25 +17,28 @@ repositories {
 val mainVerticleName = "com.mamaliang.npps.manage.ManageVerticle"
 val launcherClassName = "com.mamaliang.npps.Launcher"
 
-val watchForChange = "src/**/*"
-val doOnChange = "${projectDir}/gradlew classes"
+//val watchForChange = "src/**/*"
+//val doOnChange = "${projectDir}/gradlew classes"
 
 application {
     mainClass.set(launcherClassName)
 }
 
 dependencies {
-    implementation(platform("io.vertx:vertx-stack-depchain:${property("vertxVersion")}"))
+    implementation(platform("io.vertx:vertx-stack-depchain:${property("vertx")}"))
     implementation("io.vertx:vertx-web")
     implementation("io.vertx:vertx-web-client")
     implementation("io.vertx:vertx-auth-common")
     implementation("io.vertx:vertx-auth-ldap")
     implementation("io.vertx:vertx-auth-jwt")
     implementation("io.vertx:vertx-auth-sql-client")
+    implementation("org.apache.commons:commons-lang3:${property("commonsLang3")}")
+    implementation("org.bouncycastle:bcpkix-jdk18on:${property("bouncycastle")}")
+    annotationProcessor("org.projectlombok:lombok:${property("lombok")}")
     compileOnly("io.vertx:vertx-codegen")
-//    compileOnly("org.projectlombok:lombok:1.18.34")
+    compileOnly("org.projectlombok:lombok:${property("lombok")}")
     testImplementation("io.vertx:vertx-junit5")
-    testImplementation("org.junit.jupiter:junit-jupiter:${property("junitJupiterVersion")}")
+    testImplementation("org.junit.jupiter:junit-jupiter:${property("junit")}")
 }
 
 java {
