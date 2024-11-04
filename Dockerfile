@@ -1,5 +1,7 @@
 FROM amazoncorretto:21-alpine3.20
 
-COPY /build/libs/npps-1.0.0-SNAPSHOT-fat.jar /opt/npps-1.0.0-SNAPSHOT-fat.jar
+ARG VERSION
 
-ENTRYPOINT ["java","-jar","/opt/npps-1.0.0-SNAPSHOT-fat.jar"]
+COPY /build/libs/npps-${VERSION}-fat.jar /opt/
+
+ENTRYPOINT ["java","-jar","/opt/npps-${VERSION}-fat.jar"]
