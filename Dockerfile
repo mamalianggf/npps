@@ -4,4 +4,4 @@ ARG VERSION
 
 COPY /build/libs/npps-${VERSION}-fat.jar /opt/
 
-ENTRYPOINT exec java -jar /opt/npps-${VERSION}-fat.jar
+ENTRYPOINT ["java","-jar","/opt/npps-*-fat.jar"]
