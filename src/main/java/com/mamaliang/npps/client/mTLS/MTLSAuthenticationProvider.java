@@ -6,6 +6,8 @@ import io.vertx.core.Future;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.ext.auth.User;
 import org.apache.commons.lang3.StringUtils;
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.asn1.x500.style.BCStyle;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.openssl.PEMParser;
 
@@ -53,6 +55,8 @@ public class MTLSAuthenticationProvider implements CustomAuthenticationProvider<
         try (StringReader stringReader = new StringReader(credentials.getCertPem());
              PEMParser pemParser = new PEMParser(stringReader)) {
             X509CertificateHolder holder = (X509CertificateHolder) pemParser.readObject();
+            X500Name subject = holder.getSubject();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
