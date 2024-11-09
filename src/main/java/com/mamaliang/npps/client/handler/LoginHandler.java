@@ -1,5 +1,6 @@
 package com.mamaliang.npps.client.handler;
 
+import com.mamaliang.npps.client.session.UserSession;
 import com.mamaliang.npps.common.CustomAuthenticationProvider;
 import com.mamaliang.npps.common.Tuple;
 import io.vertx.core.Future;
@@ -10,6 +11,7 @@ import io.vertx.ext.auth.authentication.Credentials;
 import io.vertx.ext.web.RoutingContext;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author gaof
@@ -26,7 +28,7 @@ public class LoginHandler implements Handler<RoutingContext> {
     @Override
     public void handle(RoutingContext routingContext) {
         HttpServerRequest req = routingContext.request();
-        User user;
+        User user = null;
         for (CustomAuthenticationProvider<? extends Credentials> provider : providers) {
             Tuple<Boolean, User> result = processProvider(provider, req);
             if (result.v1()) {
@@ -34,6 +36,13 @@ public class LoginHandler implements Handler<RoutingContext> {
                 break;
             }
         }
+        if (Objects.isNull(user)){
+            // response 401
+        }
+        UserSession userSession = constructUserSession(user);
+        // redis add online user session
+
+
     }
 
     private <T extends Credentials> Tuple<Boolean, User> processProvider(CustomAuthenticationProvider<T> provider, HttpServerRequest req) {
@@ -44,5 +53,9 @@ public class LoginHandler implements Handler<RoutingContext> {
             return new Tuple<>(true, user);
         }
         return new Tuple<>(false, null);
+    }
+
+    private UserSession constructUserSession(User user) {
+        return null;
     }
 }
